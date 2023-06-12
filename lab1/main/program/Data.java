@@ -11,7 +11,6 @@ public class Data {
     }
 
     public Double getKeyValue (String key){
-        //обработать
         return param.get(key);
     }
     public void putKeyValue (String key, Double value){
@@ -19,7 +18,6 @@ public class Data {
     }
 
     public Double getTopElem() {
-        //обработать
         return stack.peek();
     }
 
@@ -27,9 +25,8 @@ public class Data {
         stack.push(value);
     }
 
-    public Double pop_stack() {
-        //обработать
-        return stack.pop();
+    public void pop_stack() {
+        stack.pop();
     }
 
     private Map<String, Double> param;
