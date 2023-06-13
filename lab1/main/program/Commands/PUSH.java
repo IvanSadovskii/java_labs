@@ -2,6 +2,7 @@ package main.program.Commands;
 import main.program.Data;
 import main.program.Factory.ICommand;
 
+import java.util.EmptyStackException;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
@@ -24,6 +25,7 @@ public class PUSH implements ICommand{
             }
             catch (NoSuchElementException ex){
                 ex.printStackTrace();
+                throw new NoSuchElementException();
             }
         }
 

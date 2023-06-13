@@ -16,6 +16,7 @@ public class DEFINE implements ICommand{
         }
         catch(InputMismatchException ex){
             ex.printStackTrace();
+            throw new InputMismatchException();
         }
     }
 }

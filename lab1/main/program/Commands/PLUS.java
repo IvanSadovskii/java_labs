@@ -18,6 +18,7 @@ public class PLUS implements ICommand{
         }
         catch (EmptyStackException ex){
             ex.printStackTrace();
+            throw new EmptyStackException();
         }
     }
 }

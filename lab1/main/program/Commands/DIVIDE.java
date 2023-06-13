@@ -10,16 +10,23 @@ public class DIVIDE implements ICommand{
             Double first_value = calcData.getTopElem();
             calcData.pop_stack();
             Double second_value = calcData.getTopElem();
-            calcData.pop_stack();
-
-            if (first_value == 0) {
+            if (second_value == 0) {
                 throw new ArithmeticException("Ошибка: деление на ноль");
             }
+            else {
+                calcData.pop_stack();
+                calcData.push_stack(first_value / second_value);
+            }
 
-            calcData.push_stack(first_value / second_value);
-        } catch (EmptyStackException | ArithmeticException ex) {
+        } catch (EmptyStackException ex){
             ex.printStackTrace();
+            throw new EmptyStackException();
         }
+        catch (ArithmeticException ex){
+            ex.printStackTrace();
+            throw new ArithmeticException();
+        }
+
     }
 
 }

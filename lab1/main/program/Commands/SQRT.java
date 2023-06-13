@@ -15,8 +15,13 @@ public class SQRT implements ICommand{
 
             calcData.push_stack(Math.sqrt(first_value));
         }
-        catch (EmptyStackException | ArithmeticException ex){
+        catch (EmptyStackException ex){
             ex.printStackTrace();
+            throw new EmptyStackException();
+        }
+        catch (ArithmeticException ex){
+            ex.printStackTrace();
+            throw new ArithmeticException();
         }
     }
 }
