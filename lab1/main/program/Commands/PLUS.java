@@ -12,7 +12,6 @@ public class PLUS implements ICommand{
             calcData.pop_stack();
             Double second_value = calcData.getTopElem();
             calcData.pop_stack();
-            //обработать
 
             calcData.push_stack(first_value + second_value);
         }

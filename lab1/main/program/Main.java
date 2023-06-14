@@ -11,23 +11,24 @@ import java.util.Scanner;
 
 
 public class Main {
+
     public static void main(String[] args) {
 
         Data data = new Data();
+
         FactoryCommand factory = new FactoryCommand();
         String[] input;
 
 
         try {
             File file = new File("in.txt");
-            // обработать
             Scanner scanner = new Scanner(file);
-            //обработать
+
             while (scanner.hasNextLine()) {
 
-                input = scanner.nextLine().split(CONSTS.SPACE_SYMBOL); //убрать магию + обработать
+                input = scanner.nextLine().split(CONSTS.SPACE_SYMBOL);
 
-                ICommand cmd = factory.setCommand(input[CONSTS.FIRST_ELEM_ID]); // магия
+                ICommand cmd = factory.setCommand(input[CONSTS.FIRST_ELEM_ID]);
                 cmd.doCommand(input, data);
 
             }
@@ -46,6 +47,6 @@ public class Main {
             }
 
         }
-
     }
+
 }

@@ -11,7 +11,7 @@ import java.util.Map;
 
 
 public class FactoryCommand {
-    private final Map<String, ICommand> commands = new HashMap<>(); //сюда кладем созданные комманды с фабрики по ключ значению
+    private final Map<String, ICommand> commands = new HashMap<>();
 
     public FactoryCommand() {
 
