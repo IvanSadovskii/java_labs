@@ -20,7 +20,8 @@ public class TetrisController implements Runnable{
     private EventQueue<TetrisEvent> eventQueue;
     private Score score;
 
-    private boolean isEnded;
+    private boolean isScoreset;
+
 
     public TetrisController(int width, int height) {
         this.width = width;
@@ -41,16 +42,23 @@ public class TetrisController implements Runnable{
     }
 
     public void run() {
-        isEnded = false;
+
+
         view = new TetrisView(field, preview, score, eventQueue);
         view.run();
 
-        while (!isEnded) {
+        while (true) {
             if (eventQueue.hasEvent()) {
                 TetrisEvent tetrisEvent = eventQueue.getEvent();
                 switch (tetrisEvent) {
                     case NEW_GAME:
+                        isScoreset = false;
                         createGame(width, height);
+                        view.stop();
+                        createGame(width, height);
+                        TetrisView v = new TetrisView(field, preview, score, eventQueue);
+
+                        v.run();
                         break;
                     case MOVE_LEFT:
                         moveBlockLeft();
@@ -76,7 +84,6 @@ public class TetrisController implements Runnable{
                 }
             }
         }
-
     }
 
     public void makeStep() {
@@ -96,8 +103,8 @@ public class TetrisController implements Runnable{
     }
 
     private void endGame() {
-        isEnded = true;
-        Score.save(score.get());
+        if(!isScoreset) Score.save(score.get());
+        isScoreset = true;
     }
 
     public void moveBlockLeft() {

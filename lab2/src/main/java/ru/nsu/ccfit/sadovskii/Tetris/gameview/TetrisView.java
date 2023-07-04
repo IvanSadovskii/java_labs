@@ -1,5 +1,6 @@
 package ru.nsu.ccfit.sadovskii.Tetris.gameview;
 
+import ru.nsu.ccfit.sadovskii.Tetris.controller.TetrisController;
 import ru.nsu.ccfit.sadovskii.Tetris.event.TetrisEvent;
 import ru.nsu.ccfit.sadovskii.Tetris.event.EventQueue;
 import ru.nsu.ccfit.sadovskii.Tetris.menuview.AboutView;
@@ -57,7 +58,8 @@ public class TetrisView extends JFrame implements ActionListener {
 
         JMenuItem newGameMenuItem = new JMenuItem("New game");
         newGameMenuItem.addActionListener(e -> {
-            new TetrisView(field, preview, score, eventQueue);
+            this.dispose();
+            eventQueue.addEvent(TetrisEvent.NEW_GAME);
 
         });
         menu.add(newGameMenuItem);
@@ -128,6 +130,11 @@ public class TetrisView extends JFrame implements ActionListener {
     public void run() {
         timer.start();
     }
+
+    public void stop() {
+        timer.stop();
+    }
+
 
 
     @Override
