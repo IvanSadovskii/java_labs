@@ -19,7 +19,7 @@ public class TetrisView extends JFrame implements ActionListener {
     private EventQueue<TetrisEvent> eventQueue;
     private Timer timer;
     private static final int EXIT_CODE = 0;
-    private static final int TIMER_DELAY = 400;
+    private static final int TIMER_DELAY = 300;
 
     private static final int fieldView_HEIGHT = 440;
     private static final int fieldView_WEIGHT = 200;

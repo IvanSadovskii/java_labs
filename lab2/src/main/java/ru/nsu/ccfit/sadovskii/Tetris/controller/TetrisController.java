@@ -9,15 +9,15 @@ import ru.nsu.ccfit.sadovskii.Tetris.gameview.TetrisView;
 public class TetrisController implements Runnable{
 
     private int width, height;
-    public Field field;
-    public Field preview;
+    private Field field;
+    private Field preview;
     private BlockFactory factory;
     private Block currentBlock;
     private Block nextBlock;
     private BlockAdapter fieldAdapter;
     private BlockAdapter previewAdapter;
     private TetrisView view;
-    public EventQueue<TetrisEvent> eventQueue;
+    private EventQueue<TetrisEvent> eventQueue;
     private Score score;
 
     private boolean isEnded;
