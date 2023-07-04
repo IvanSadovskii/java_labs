@@ -19,7 +19,8 @@ public class TetrisController implements Runnable{
     private TetrisView view;
     private EventQueue<TetrisEvent> eventQueue;
     private Score score;
-
+    private static final int preview_width = 5;
+    private static final int preview_height = 5;
     private boolean isScoreset;
 
 
@@ -32,7 +33,7 @@ public class TetrisController implements Runnable{
     private void createGame(int width, int height) {
         score = new Score();
         field = new Field(width, height);
-        preview = new Field(5, 5);
+        preview = new Field(preview_width, preview_height);
         factory = new BlockFactory();
         currentBlock = factory.createRandomBlock();
         nextBlock = factory.createRandomBlock();
@@ -56,9 +57,8 @@ public class TetrisController implements Runnable{
                         createGame(width, height);
                         view.stop();
                         createGame(width, height);
-                        TetrisView v = new TetrisView(field, preview, score, eventQueue);
-
-                        v.run();
+                        TetrisView new_view = new TetrisView(field, preview, score, eventQueue);
+                        new_view.run();
                         break;
                     case MOVE_LEFT:
                         moveBlockLeft();
